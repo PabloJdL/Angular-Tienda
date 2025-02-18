@@ -1,13 +1,13 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
-import { Product, products } from '../product';
 import { CartService } from '../cart.service';
+import { Product, products } from '../product';
 
 @Component({
   selector: 'app-product-details',
-  imports: [NgIf, CommonModule],
+  imports: [NgIf, CommonModule, RouterLink],
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
@@ -27,5 +27,9 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(product: Product) {
     this.cartService.addToCart(product);
     window.alert("Your product has been added to the cart!");
+  }
+
+  avisarStock(product: Product) {
+    window.alert('Se te avisara cuando vuelva a haber disponibilidad de este producto');
   }
 }
